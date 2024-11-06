@@ -18,10 +18,13 @@ colourButtons.forEach( button => {
     })
 })
 
-// Rotate Images Function 
-const rotateImageButton = document.getElementById('myImages').addEventListener('click', nextImage)
+// Rotate Images Function
 const imagesArray =  [ 'view1.jpg', 'view2.jpg', 'view3.jpg', 'view4.jpg', 'view5.jpg','view6.jpg' ]
-
+if(currentPage == "index.html") {
+    document.getElementById('myImages').addEventListener('click', nextImage) 
+    // Rotate Images on a timer of 2000 miliseconds
+    setInterval(nextImage, 2000)
+}
 function nextImage(){
     const img = document.getElementById('myImages')
     let imgSrc = img.getAttribute('src')
@@ -30,6 +33,3 @@ function nextImage(){
     if(imgIndex >= imagesArray.length) imgIndex = 0
     img.setAttribute('src', `images/${imagesArray[imgIndex]}`)
 }
-
-// Rotate Images on a timer of 2000 miliseconds
-setInterval(nextImage, 2000)
